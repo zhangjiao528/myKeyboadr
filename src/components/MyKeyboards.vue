@@ -3,6 +3,7 @@
   <ul class='keyboards'>
     <li v-for='(item, index) in keyLists' :key='index' :class="{'empty': !item}" @click="clickKey(item)">
       <span class="iconfont icon-shanchu" v-if="item === 'delete'"></span>
+      <span class="caps-lock" v-else-if="item === 'Caps Lock'">{{ item }}</span>
       <span v-else>{{ item }}</span>
     </li>
   </ul>
@@ -15,7 +16,7 @@ export default {
   data () {
     return {
       keyValue: '',
-      keyLists: ['', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '', '', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'delete', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '@', '.', '_', '']
+      keyLists: ['', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '', '', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'delete', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '@', '.', '_', '', 'Caps Lock']
     }
   },
   methods: {
@@ -71,6 +72,9 @@ export default {
   font-weight: bold;
   box-sizing: border-box;
   cursor: pointer;
+}
+.keyboards li .caps-lock{
+  font-size: 14px;
 }
 .keyboards li.empty{
   width: 6px;
