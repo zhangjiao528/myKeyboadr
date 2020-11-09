@@ -27,18 +27,19 @@ export default {
           this.keyValue = kbt.length ? kbt.substring(0, kbt.length - 1) : kbt
           break
         }
+
         default: {
           this.keyValue += key
           break
         }
       }
-      this.$emit('getKeyValue', this.keyValue)
+      this.$emit('getKeyValue', this.keyValue.toLowerCase())
     }
   }
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .keybox{
   width: 1080px;
   height: 300px;
@@ -57,28 +58,28 @@ export default {
   list-style: none;
   border: 1px solid #000;
   box-sizing: border-box;
-}
-.keyboards li{
-  margin: 0 20px 15px 0;
-  width: 80px;
-  height: 55px;
-  line-height: 50px;
-  text-align: center;
-  border: 2px solid #D2D2D2;
-  border-radius: 10px;
-  color: #333;
-  font-family: PingFang SC;
-  font-size: 22px;
-  font-weight: bold;
-  box-sizing: border-box;
-  cursor: pointer;
-}
-.keyboards li .caps-lock{
-  font-size: 14px;
-}
-.keyboards li.empty{
-  width: 6px;
-  height: 55px;
-  border: 0;
+  li{
+    margin: 0 20px 15px 0;
+    width: 80px;
+    height: 55px;
+    line-height: 50px;
+    text-align: center;
+    border: 2px solid #D2D2D2;
+    border-radius: 10px;
+    color: #333;
+    font-family: PingFang SC;
+    font-size: 22px;
+    font-weight: bold;
+    box-sizing: border-box;
+    cursor: pointer;
+    .caps-lock{
+      font-size: 14px;
+    }
+    &.empty{
+      width: 6px;
+      height: 55px;
+      border: 0;
+    }
+  }
 }
 </style>

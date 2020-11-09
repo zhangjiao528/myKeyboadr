@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     updateKeyValue (keyValue) {
-      this.keyboards = keyValue.toLowerCase()
+      this.keyboards = keyValue
     }
   }
 }
