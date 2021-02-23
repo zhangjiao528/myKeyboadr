@@ -19,13 +19,6 @@ export default {
     }
   },
   created () {
-    var a = []
-    for (let i = 0; i < 10; i++) {
-      a[i] = function () {
-        console.log(i)
-      }
-    }
-    a[8]()
   },
   methods: {
     updateKeyValue (keyValue) {

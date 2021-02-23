@@ -7,20 +7,36 @@
       <span v-else>{{ item }}</span>
     </li>
   </ul>
+  <vxe-form title-align="right" title-width="120" title-colon :data="searchData">
+    <vxe-form-item title="性别" span="8">
+      <vxe-select v-model="searchData.equipmentType" placeholder="请选择设备类别" clearable>
+        <vxe-option :value="item.value" :label="item.label" v-for="item of sexList" :key="item.value"></vxe-option>
+      </vxe-select>
+    </vxe-form-item>
+  </vxe-form>
 </div>
 </template>
-
 <script>
 export default {
   name: 'MyKeyboards',
-  data () {
+  data() {
     return {
       keyValue: '',
-      keyLists: ['', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '', '', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'delete', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '@', '.', '_', '', 'Caps Lock']
+      keyLists: ['', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '', '', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'delete', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '@', '.', '_', '', 'Caps Lock'],
+      sexList: [{
+          value: 1,
+          label: '男'
+        },
+        {
+          value: 2,
+          label: '女'
+        }
+      ],
+      searchData: {}
     }
   },
   methods: {
-    clickKey (key) {
+    clickKey(key) {
       switch (key) {
         case 'delete': {
           const kbt = this.keyValue
@@ -40,7 +56,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.keybox{
+.keybox {
   width: 1080px;
   height: 300px;
   margin: 0 auto;
@@ -48,7 +64,8 @@ export default {
   border: 1px solid #000;
   box-sizing: border-box;
 }
-.keyboards{
+
+.keyboards {
   display: flex;
   flex-wrap: wrap;
   width: 1028px;
@@ -58,7 +75,8 @@ export default {
   list-style: none;
   border: 1px solid #000;
   box-sizing: border-box;
-  li{
+
+  li {
     margin: 0 20px 15px 0;
     width: 80px;
     height: 55px;
@@ -72,10 +90,12 @@ export default {
     font-weight: bold;
     box-sizing: border-box;
     cursor: pointer;
-    .caps-lock{
+
+    .caps-lock {
       font-size: 14px;
     }
-    &.empty{
+
+    &.empty {
       width: 6px;
       height: 55px;
       border: 0;
